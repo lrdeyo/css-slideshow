@@ -1,4 +1,10 @@
 css-slideshow
 =============
 
-playing around with css - seeing what i can come up with
+Playing around with building a slideshow solely in CSS
+
+Current Goals:
+1. Use SASS - too many browser specific rules
+2. Beautify
+3. Controls
+4. Others???
