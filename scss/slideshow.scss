@@ -41,29 +41,19 @@
 }
 .slideshow-viewer li.first-slide {
 	right: 0px;
-	animation: first 20s linear infinite running;
-	-webkit-animation: first 20s linear infinite running;
-	-moz-animation: first 20s linear infinite running;
+	@include build-prefix-values( animation, first 20s linear infinite running );
 }
 .slideshow-viewer li.second-slide {
-	animation: second 20s linear infinite running;
-	-webkit-animation: second 20s linear infinite running;
-	-moz-animation: second 20s linear infinite running;
+	@include build-prefix-values( animation, second 20s linear infinite running );
 }
 .slideshow-viewer li.third-slide {
-	animation: third 20s linear infinite running;
-	-webkit-animation: third 20s linear infinite running;
-	-moz-animation: third 20s linear infinite running;
+	@include build-prefix-values( animation, third 20s linear infinite running );
 }
 .slideshow-viewer li.fourth-slide {
-	animation: fourth 20s linear infinite running;
-	-webkit-animation: fourth 20s linear infinite running;
-	-moz-animation: fourth 20s linear infinite running;
+	@include build-prefix-values( animation, fourth 20s linear infinite running );
 }
 .slideshow-viewer:hover li {
-	animation-play-state: paused;
-	-webkit-animation-play-state: paused;
-	-moz-animation-play-state: paused;
+	@include build-prefix-values( animation-play-state, paused );
 }
 @for $j from 1 through length( $slide-animations ) {
 	@include slideshow-animation( 4, 5, 1, nth( $slide-animations, $j ), ( $j - 1 ) );

@@ -1,3 +1,15 @@
+@mixin build-prefix-values($property, $value, $prefixes: webkit) {
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$property}: #{$value};
+    }
+    #{$property}: #{$value};
+} 
+
+/* Since I am only creating one animation with keyframes for this page 
+I am going to leave following as is. If this project were to grow I would implement
+a keyframe specific mixin for handling any keyframe implementation. At this point any
+abstraction would only be used once and would just introduce bloat. Let me know if 
+you disagree with this. */
 @mixin slideshow-animation( $slides, $visibleSecs, $animatingSecs, $name, $pos ) {
 	/* keyframes per second */
 	$kps: 100 / ( $slides * $visibleSecs );
@@ -14,36 +26,6 @@
 				100% { right: 0; }
 				25% { right: -$width; z-index: 0; }
 				95% { right: $width; z-index: 0; }
-				26% { right: $width; z-index: -1; }
-			}
-			@else {
-				0%,
-				70% { right: $width; }
-				75%,
-				80%,
-				95% { right: 0; }
-				100% { right: -$width; z-index: 0; }
-			}
-		}
-		@else {
-			0%,
-			#{ ( $vf * $pos ) + ( $af * ( $pos - 1 ) ) * 1% } { right: $width; }
-			#{ ( $vf * $pos ) + ( $af * $pos ) * 1% },
-			#{ ( $vf * ( $pos + 1 ) ) + ( $af * $pos ) * 1% } { right: 0; }
-			#{ ( $vf * ( $pos + 1 ) ) + ( $af * ( $pos + 1 ) ) * 1% } { right: -$width; z-index: 0; }
-			#{ ( ( $vf * ( $pos + 1 ) ) + ( $af * ( $pos + 1 ) ) + 1 ) * 1% } { right: $width; z-index: -1; }
-			100% { right: $width; z-index: 0; }
-		}
-	}
-	@-moz-keyframes $name {
-		@if $pos == 0 or $pos == ( $slides - 1 ) {
-			@if $pos == 0 {
-				0%,
-				5%,
-				20%,
-				100% { right: 0; }
-				25%,
-				95% { right: -$width; z-index: 0; }
 				26% { right: $width; z-index: -1; }
 			}
 			@else {
